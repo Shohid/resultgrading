@@ -1,16 +1,8 @@
-//***************************************************************
-//                   HEADER FILE USED IN PROJECT
-//****************************************************************
-
 #include<conio.h>
 #include<stdio.h>
 #include<process.h>
 #include<fstream.h>
 #include<iomanip.h>
-
-//***************************************************************
-//                   CLASS USED IN PROJECT
-//****************************************************************
 
 class student
 {
@@ -77,18 +69,8 @@ public:
 
 };         //class ends here
 
-
-
-//***************************************************************
-//      global declaration for stream object, object
-//****************************************************************
-
 fstream fp;
 student st;
-
-//***************************************************************
-//      function to write in file
-//****************************************************************
 
 void write_student()
 {
@@ -100,16 +82,10 @@ void write_student()
     getch();
 }
 
-
-//***************************************************************
-//      function to read all records from file
-//****************************************************************
-
-
 void display_all()
 {
     clrscr();
-    cout<<"\n\n\n\t\tDISPLAY ALL RECORD !!!\n\n";
+    cout<<"\n\n\n\t\tDISPLAY ALL RECORDS !!!\n\n";
     fp.open("student.dat",ios::in);
     while(fp.read((char*)&st,sizeof(student)))
     {
@@ -120,12 +96,6 @@ void display_all()
     fp.close();
     getch();
 }
-
-
-//***************************************************************
-//      function to read specific record from file
-//****************************************************************
-
 
 void display_sp(int n)
 {
@@ -145,12 +115,6 @@ void display_sp(int n)
         cout<<"\n\nrecord not exist";
     getch();
 }
-
-
-//***************************************************************
-//      function to modify record of file
-//****************************************************************
-
 
 void modify_student()
 {
@@ -180,12 +144,6 @@ void modify_student()
     getch();
 }
 
-
-//***************************************************************
-//      function to delete record of file
-//****************************************************************
-
-
 void delete_student()
 {
     int no;
@@ -212,18 +170,13 @@ void delete_student()
     getch();
 }
 
-
-//***************************************************************
-//      function to display all students grade report
-//****************************************************************
-
 void class_result()
 {
     clrscr();
     fp.open("student.dat",ios::in);
     if(!fp)
     {
-        cout<<"ERROR!!! FILE COULD NOT BE OPEN\n\n\n Go To Entry Menu to create File";
+        cout<<"ERROR!!! FILE Not found";
         cout<<"\n\n\n Program is closing ....";
         getch();
         exit(0);
@@ -242,20 +195,13 @@ void class_result()
     getch();
 }
 
-
-
-
-//***************************************************************
-//      function to display result menu
-//****************************************************************
-
 void result()
 {
     int ans,rno;
     char ch;
     clrscr();
     cout<<"\n\n\nRESULT MENU";
-    cout<<"\n\n\n1. Class Result\n\n2. Student Report Card\n\n3.Back to Main Menu";
+    cout<<"\n\n\n1. Result sheet\n\n2. Report Card\n\n3.Return to main menu";
     cout<<"\n\n\nEnter Choice (1/2)? ";
     cin>>ans;
     switch(ans)
@@ -269,7 +215,7 @@ void result()
         {
             clrscr();
             char ans;
-            cout<<"\n\nEnter Roll Number Of Student : ";
+            cout<<"\n\nEnter the Roll Number Of Student : ";
             cin>>rno;
             display_sp(rno);
             cout<<"\n\nDo you want to See More Result (y/n)?";
@@ -286,42 +232,18 @@ void result()
     }
 }
 
-//***************************************************************
-//      INTRODUCTION FUNCTION
-//****************************************************************
 
-void intro()
-{
-    clrscr();
-    gotoxy(35,11);
-    cout<<"STUDENT";
-    gotoxy(33,14);
-    cout<<"REPORT CARD";
-    gotoxy(35,17);
-    cout<<"PROJECT";
-    cout<<"\n\nMADE BY : Code With C";
-    cout<<"\n\nCONTACT : codewithc.com";
-    getch();
-
-}
-
-
-
-
-//***************************************************************
-//      ENTRY / EDIT MENU FUNCTION
-//****************************************************************
 void entry_menu()
 {
     clrscr();
     char ch2;
-    cout<<"\n\n\n\tENTRY MENU";
-    cout<<"\n\n\t1.CREATE STUDENT RECORD";
-    cout<<"\n\n\t2.DISPLAY ALL STUDENTS RECORDS";
-    cout<<"\n\n\t3.SEARCH STUDENT RECORD ";
-    cout<<"\n\n\t4.MODIFY STUDENT RECORD";
-    cout<<"\n\n\t5.DELETE STUDENT RECORD";
-    cout<<"\n\n\t6.BACK TO MAIN MENU";
+    cout<<"\n\n\n\tNew Record Entry Board";
+    cout<<"\n\n\t1.Add student record";
+    cout<<"\n\n\t2.Display the all tstudent record";
+    cout<<"\n\n\t3.Search any student record";
+    cout<<"\n\n\t4.Modify any record";
+    cout<<"\n\n\t5.Remove any record";
+    cout<<"\n\n\t6.Return to Dashboard";
     cout<<"\n\n\tPlease Enter Your Choice (1-6) ";
     ch2=getche();
     switch(ch2)
@@ -354,22 +276,16 @@ void entry_menu()
     }
 }
 
-
-//***************************************************************
-//      THE MAIN FUNCTION OF PROGRAM
-//****************************************************************
-
-
 void main()
 {
     char ch;
-    intro();
+
     do
     {
         clrscr();
-        cout<<"\n\n\n\tMAIN MENU";
-        cout<<"\n\n\t01. RESULT MENU";
-        cout<<"\n\n\t02. ENTRY/EDIT MENU";
+        cout<<"\n\n\n\tDashboard";
+        cout<<"\n\n\t01. RESULT Menu";
+        cout<<"\n\n\t02. Add/Modify";
         cout<<"\n\n\t03. EXIT";
         cout<<"\n\n\tPlease Select Your Option (1-3) ";
         ch=getche();
@@ -390,7 +306,3 @@ void main()
     }
     while(ch!='3');
 }
-
-//***************************************************************
-//                      END OF PROJECT
-//***************************************************************
